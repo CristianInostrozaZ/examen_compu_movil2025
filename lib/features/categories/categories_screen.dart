@@ -20,7 +20,12 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
     _future = _repo.list();
   }
 
-  void _reload() => setState(() => _future = _repo.list());
+ Future<void> _reload() async {
+  final newFuture = _repo.list(); 
+  setState(() {
+    _future = newFuture;
+  });
+}
   Future<void> _refresh() async => _reload();
 
   Future<void> _delete(Categoria c) async {
